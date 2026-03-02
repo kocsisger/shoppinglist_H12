@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ShoppingList</string>
+    <string name="empty_list">No hay elementos en la lista</string>
 </resources>

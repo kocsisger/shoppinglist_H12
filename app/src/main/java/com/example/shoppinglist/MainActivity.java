@@ -23,9 +23,13 @@ public class MainActivity extends AppCompatActivity {
     ActivityResultLauncher activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             activityResult -> {
-                String item = activityResult.getData().getStringExtra("ITEM");
+                if (activityResult.getResultCode()!=RESULT_OK) return;
+
+                String item = activityResult.getData().getStringExtra(ItemsActivity.ITEM);
                 Log.d("ITEMS_TEST", item);
                 Log.d("ITEMS_TEST", "I have returned");
+                if (itemsTextView.getText().toString().equals( getString(R.string.empty_list) ))
+                    itemsTextView.setText("");
                 itemsTextView.append(item + "\n");
             }
     );
